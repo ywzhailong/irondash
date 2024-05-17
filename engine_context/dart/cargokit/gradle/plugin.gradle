@@ -111,7 +111,7 @@ class CargoKitPlugin implements Plugin<Project> {
 
         def cargoBuildDir = "${project.buildDir}/build"
 
-        plugin.project.android.applicationVariants.all { variant ->
+        (plugin.project.android.hasProperty("applicationVariants") ? plugin.project.android.applicationVariants : plugin.project.android.libraryVariants).all { variant ->
 
             final buildType = variant.buildType.name
 
